@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reforma.com Portfólio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Reforma.com: projeto, gestão e execução de reformas de alto padrão em Florianópolis. Mais de 150 obras entregues.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap">
+<style>
+/* Layout: branco e preto, como o PDF. Cada obra tem uma foto sobre uma faixa preta de ponta a ponta e uma legenda em tarja preta com letras espaçadas. */
+:root{
+  --paper:#ffffff;
+  --ink:#000000;
+  --text:#111111;
+  --muted:#5c5c5c;
+  --rule:#e6e6e6;
+  --onink:#ffffff;
+  --display:"Bebas Neue","Oswald","Arial Narrow",Impact,sans-serif;
+  --body:"Roboto",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --max:1180px;
+  --gut-l:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+
+.logo{font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.3em;text-decoration:none;white-space:nowrap}
+.logo span{font-weight:400;color:var(--muted)}
+
+/* Cabeçalho */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:14px}
+.top nav{display:flex;gap:26px;flex-wrap:wrap}
+.top nav a{font-family:var(--display);font-size:17px;letter-spacing:.16em;text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+@media (max-width:780px){.top nav{display:none}}
+
+/* Títulos de seção */
+.titulo{font-family:var(--display);font-size:clamp(30px,4vw,46px);letter-spacing:.14em;line-height:1.05;text-align:center}
+.titulo.grande{font-size:clamp(56px,10vw,120px);letter-spacing:.18em;padding-left:.18em}
+.titulo.peq{font-size:clamp(26px,3vw,34px);letter-spacing:.04em}
+
+/* Faixa preta atrás da foto */
+.faixa{position:relative;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.faixa::before{content:"";position:absolute;left:0;right:0;top:22%;bottom:22%;background:var(--ink)}
+.faixa > *{position:relative}
+.faixa .foto{max-width:860px;margin:0 auto}
+
+/* Legenda em tarja */
+.legenda{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--ink);color:var(--onink);font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.42em;text-transform:uppercase;padding:9px 18px}
+.credito{text-align:center;font-weight:700;font-size:11px;letter-spacing:.42em;text-transform:uppercase;margin-top:22px}
+
+/* Capa */
+.capa{padding-block:clamp(40px,7vw,80px) clamp(48px,7vw,90px)}
+.capa .titulo{margin-bottom:clamp(24px,4vw,40px)}
+.capa .fotos{display:grid;gap:10px;max-width:860px;margin:0 auto}
+.capa .fotos img{width:100%;object-fit:cover}
+.capa .fotos img:first-child{aspect-ratio:16/8.6}
+.capa .fotos img:last-child{aspect-ratio:16/5;object-position:center 70%}
+.capa .assina{text-align:center;margin-top:22px}
+
+/* Sobre */
+.sobre{padding-block:clamp(56px,8vw,100px);border-top:1px solid var(--rule)}
+.sobre .titulo{font-size:clamp(26px,3vw,34px);letter-spacing:.06em;margin-bottom:32px}
+.sobre .texto{max-width:760px;margin:0 auto;text-align:center;font-weight:500;letter-spacing:.06em;display:grid;gap:18px}
+.sobre .texto p{margin:0}
+.numeros{display:flex;justify-content:center;gap:clamp(28px,6vw,80px);flex-wrap:wrap;margin-top:48px;padding-top:36px;border-top:1px solid var(--rule)}
+.numeros div{display:flex;flex-direction:column;align-items:center}
+.numeros b{font-family:var(--display);font-weight:400;font-size:clamp(44px,5vw,60px);line-height:1;letter-spacing:.04em}
+.numeros small{font-weight:700;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+
+/* Obras */
+.obras-cab{padding-block:clamp(56px,8vw,96px) 0;border-top:1px solid var(--rule)}
+.obra{padding-block:clamp(48px,7vw,88px)}
+.obra .titulo{margin-bottom:clamp(24px,3vw,36px)}
+.foto{display:block;width:100%;overflow:hidden;cursor:zoom-in;border:0;padding:0;background:var(--rule)}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.foto:hover img{transform:scale(1.025)}
+.foto-larga{aspect-ratio:3/2}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px;max-width:860px;margin:0 auto}
+.duas{grid-auto-rows:clamp(320px,42vw,520px)}
+.duas .foto{height:100%}
+.faixa .legenda{max-width:860px;margin:10px auto 0}
+.obra .faixa{padding-block:0}
+
+/* Outras obras */
+.outras{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--rule)}
+.outras .titulo{margin-bottom:36px}
+.cartoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px);max-width:860px;margin:0 auto}
+.cartao{background:var(--ink);padding:10px 10px 0;display:flex;flex-direction:column}
+.cartao .foto{aspect-ratio:5/7}
+.cartao span{color:var(--onink);font-family:var(--display);font-size:clamp(15px,1.8vw,20px);letter-spacing:.08em;text-align:center;padding:12px 4px 14px;line-height:1.2}
+@media (max-width:560px){.cartoes{grid-template-columns:1fr 1fr}.cartao:last-child{grid-column:span 2}.cartao:last-child .foto{aspect-ratio:4/3}}
+
+/* Lagoa */
+.lagoa .quarto{max-width:860px;margin:0 auto 10px;position:relative}
+.lagoa .quarto .foto{aspect-ratio:3/2}
+.lagoa .quarto .rotulo{position:absolute;left:0;right:0;bottom:0;background:rgba(40,40,40,.86);color:var(--onink);font-family:var(--display);font-size:clamp(18px,2.2vw,24px);letter-spacing:.08em;text-align:center;padding:10px;pointer-events:none}
+
+/* Contato */
+.contato{padding-block:clamp(56px,8vw,100px);border-top:1px solid var(--rule)}
+.contato .titulo{font-weight:400;font-size:clamp(28px,4vw,44px);letter-spacing:.18em;margin-bottom:clamp(24px,3vw,36px)}
+.contato .faixa .foto{max-width:640px;aspect-ratio:3/2;cursor:default}
+.contato .faixa .foto:hover img{transform:none}
+.dados{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:36px;font-weight:700;letter-spacing:.06em}
+.dados a,.dados span{text-decoration:none;user-select:all}
+.dados a:hover{text-decoration:underline}
+.btn{display:inline-block;margin-top:24px;background:var(--ink);color:var(--onink);text-decoration:none;font-family:var(--display);font-size:19px;letter-spacing:.2em;padding:14px 30px 11px;transition:opacity .2s}
+.btn:hover{opacity:.82}
+.dados .btn{user-select:none}
+
+footer{border-top:1px solid var(--rule)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:22px;font-size:12px;letter-spacing:.14em;color:var(--muted)}
+
+@media (max-width:600px){
+  .legenda{letter-spacing:.24em;font-size:10px;padding:8px 12px}
+  .credito{letter-spacing:.24em}
+  .duas{grid-template-columns:1fr;grid-auto-rows:auto}
+  .duas .foto{aspect-ratio:4/3}
+  .faixa::before{top:30%;bottom:30%}
+}
+
+/* Visualizador de fotos */
+.lb[hidden]{display:none}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.95);display:grid;place-items:center;padding:max(48px,env(safe-area-inset-top,0px)) var(--gut-r) 48px var(--gut-l)}
+.lb img{max-height:86vh;max-width:min(1400px,100%);object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:var(--onink);font-family:var(--body);font-weight:400;cursor:pointer;padding:12px}
+.lb .x{top:calc(10px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px));font-size:40px;line-height:1}
+.lb .prev,.lb .next{top:50%;transform:translateY(-50%);font-size:52px}
+.lb .prev{left:calc(4px + env(safe-area-inset-left,0px))}.lb .next{right:calc(4px + env(safe-area-inset-right,0px))}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio">REFORMA<span>.COM</span></a>
+    <nav aria-label="Seções">
+      <a href="#sobre">Sobre</a>
+      <a href="#obras">Obras 2026</a>
+      <a href="#outras">Outras obras</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="capa" id="inicio">
+  <h1 class="titulo grande">PORTFOLIO</h1>
+  <div class="faixa">
+    <div class="fotos">
+      <img src="img/capa-cozinha.jpg" alt="Cozinha com bancada de mármore e marcenaria cinza, em preto e branco">
+      <img src="img/capa-jantar.jpg" alt="Sala de jantar com cadeiras brancas, em preto e branco">
+    </div>
+  </div>
+  <div class="assina"><span class="logo">REFORMA<span>.COM</span></span></div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <h2 class="titulo">SOBRE A REFORMA.COM</h2>
+    <div class="texto">
+      <p>Fundada em 2019, a empresa nasceu da união entre técnica e gestão. Com mais de 150 reformas entregues na região de Florianópolis, nossa missão é tornar a jornada da obra mais leve, previsível e com padrão de acabamento impecável, do projeto à entrega.</p>
+      <p>Possuímos ainda experiência internacional, com dois anos de atuação em obras residenciais em Londres, onde aprimoramos ainda mais nossos processos, organização e olhar para detalhes.</p>
+      <p>Nossa expertise está na arte de projetar, administrar e transformar ambientes totalmente personalizados.</p>
+      <p>Em mais de 150 obras entregues em Florianópolis, aprendemos que reformar vai muito além de quebrar paredes. Passamos a entender melhor o que cada cliente espera do seu espaço e a transformar essa ideia em uma obra bem executada, do primeiro levantamento à entrega das chaves.</p>
+      <p>Trabalhamos com técnica, gestão e atenção aos detalhes. Planejamos cada etapa, das instalações aos acabamentos, para garantir qualidade, respeito ao prazo e fidelidade ao projeto.</p>
+    </div>
+    <div class="numeros">
+      <div><b>2019</b><small>Fundação</small></div>
+      <div><b>150+</b><small>Obras entregues</small></div>
+      <div><b>2 anos</b><small>Em Londres</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="obras">
+  <div class="obras-cab"><h2 class="titulo">OBRAS 2026 EM DESTAQUE</h2></div>
+
+  <article class="obra" id="cacupe">
+    <h3 class="titulo peq">RESIDÊNCIA CACUPÉ</h3>
+    <div class="faixa">
+      <button class="foto foto-larga" aria-label="Ampliar foto"><img src="img/cacupe-1.jpg" alt="Escritório com marcenaria escura, quadros coloridos e cadeira de design" loading="lazy"></button>
+      <div class="legenda"><span>Residência Cacupé</span><span>Projeto: Arq. Antônio Couceiro</span></div>
+    </div>
+    <div class="wrap" style="max-width:892px;margin-top:10px">
+      <button class="foto foto-larga" aria-label="Ampliar foto"><img src="img/cacupe-2.jpg" alt="Living com estante de madeira e painel de mármore escuro" loading="lazy"></button>
+    </div>
+  </article>
+
+  <article class="obra" id="beiramar">
+    <h3 class="titulo peq">APARTAMENTO BEIRA MAR</h3>
+    <div class="faixa">
+      <button class="foto foto-larga" aria-label="Ampliar foto"><img src="img/beiramar-2.jpg" alt="Living revestido em madeira clara com vista para o mar" loading="lazy"></button>
+      <div class="legenda"><span>Apartamento Beira Mar</span><span>Projeto: Roberta Zimmermann</span></div>
+    </div>
+    <div class="wrap" style="max-width:892px;margin-top:10px">
+      <button class="foto foto-larga" aria-label="Ampliar foto"><img src="img/beiramar-1.jpg" alt="Sala de jantar com bar iluminado e cadeiras brancas" loading="lazy"></button>
+    </div>
+  </article>
+
+  <article class="obra" id="lys">
+    <h3 class="titulo peq">LOJA LYS | KOERICH BEIRA MAR OFFICE</h3>
+    <div class="faixa">
+      <div class="duas">
+        <button class="foto" aria-label="Ampliar foto"><img src="img/lys-2.jpg" alt="Poltronas laranja diante de araras e lustre de cristal" loading="lazy"></button>
+        <button class="foto" aria-label="Ampliar foto"><img src="img/lys-1.jpg" alt="Arranjo de flores sobre mesa de mármore e painéis de madeira" loading="lazy"></button>
+      </div>
+      <div class="legenda"><span>Loja Lys</span><span>Projeto: Roberta Zimmermann</span></div>
+    </div>
+    <div class="wrap" style="max-width:892px;margin-top:10px">
+      <button class="foto foto-larga" aria-label="Ampliar foto"><img src="img/lys-3.jpg" alt="Provador com estante iluminada e sofá rosé" loading="lazy"></button>
+    </div>
+  </article>
+</section>
+
+<section class="outras" id="outras">
+  <div class="wrap">
+    <h2 class="titulo peq">OUTRAS OBRAS JÁ ENTREGUES</h2>
+    <div class="cartoes">
+      <div class="cartao"><button class="foto" aria-label="Ampliar foto"><img src="img/residencia-sd.jpg" alt="Lavabo com revestimento de pedra avermelhada" loading="lazy"></button><span>Residência SD</span></div>
+      <div class="cartao"><button class="foto" aria-label="Ampliar foto"><img src="img/showroom-evviva.jpg" alt="Showroom com bancada de madeira e iluminação embutida" loading="lazy"></button><span>Showroom Evviva</span></div>
+      <div class="cartao"><button class="foto" aria-label="Ampliar foto"><img src="img/lagoa-banho.jpg" alt="Banheiro com bancada de granito e gabinete rosé" loading="lazy"></button><span>Residência Lagoa</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="obra lagoa" id="lagoa">
+  <h2 class="titulo peq">RESIDÊNCIA LAGOA</h2>
+  <div class="wrap">
+    <div class="quarto">
+      <button class="foto" aria-label="Ampliar foto"><img src="img/lagoa-quarto.jpg" alt="Quarto com painéis cinza e cabeceira estofada" loading="lazy"></button>
+      <div class="rotulo">Residência Lagoa</div>
+    </div>
+  </div>
+  <div class="faixa">
+    <button class="foto foto-larga" aria-label="Ampliar foto"><img src="img/lagoa-cozinha.jpg" alt="Cozinha em aço inox com coifas e mesa de jantar" loading="lazy"></button>
+  </div>
+  <p class="credito">Projeto: Meraki Interiores</p>
+</section>
+
+<section class="contato" id="contato">
+  <h2 class="titulo">ESPERAMOS TRABALHAR COM VOCÊ EM BREVE!</h2>
+  <div class="faixa">
+    <div class="foto"><img src="img/contato.jpg" alt="Suíte com banheiro em vidro, em preto e branco" loading="lazy"></div>
+  </div>
+  <div class="dados">
+    <span>+55 48 99934 8080</span>
+    <span>comercial@reformapontocom.com</span>
+    <a href="https://www.reformapontocom.com" target="_blank" rel="noopener">www.reformapontocom.com</a>
+    <a href="https://www.instagram.com/reforma.com__/" target="_blank" rel="noopener">@reforma.com__</a>
+    <a class="btn" href="https://wa.me/5548999348080" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">REFORMA<span>.COM</span></span>
+    <span>Florianópolis · SC · © 2026</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <img id="lbImg" alt="">
+  <button class="x" id="lbX" aria-label="Fechar">×</button>
+  <button class="prev" id="lbPrev" aria-label="Foto anterior">‹</button>
+  <button class="next" id="lbNext" aria-label="Próxima foto">›</button>
+</div>
+
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('button.foto'));
+  var imgs=btns.map(function(b){return b.querySelector('img');});
+  var lb=document.getElementById('lb'),li=document.getElementById('lbImg'),cur=0,last=null;
+  function show(i){cur=(i+imgs.length)%imgs.length;li.src=imgs[cur].src;li.alt=imgs[cur].alt;}
+  function open(i){last=document.activeElement;show(i);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbX').focus();}
+  function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+  btns.forEach(function(b,i){b.addEventListener('click',function(){open(i);});});
+  document.getElementById('lbX').onclick=close;
+  document.getElementById('lbPrev').onclick=function(){show(cur-1);};
+  document.getElementById('lbNext').onclick=function(){show(cur+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
+})();
+</script>
+</body>
+</html>
